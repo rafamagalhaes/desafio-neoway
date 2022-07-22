@@ -29,7 +29,7 @@ jobs:
     - name: Setting environment variables..
       run: |
         echo "AWS_DEFAULT_REGION=us-east-1" >> $GITHUB_ENV
-        echo "AWS_SG_NAME=neoway_sg_allow_ssh" >> $GITHUB_ENV
+        echo "AWS_SG_NAME=allow_ssh" >> $GITHUB_ENV
         
     - name: Add Github Actions IP to Security group
       run: |
