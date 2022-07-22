@@ -1,21 +1,25 @@
 import boto3
-from optparse import OptionParser
+import argparse
 from netmiko import ConnectHandler
 
 def parse_arguments():
-    parser = OptionParser()
-    parser.add_option("-a", "--access-key", dest="access_key", default="",
-                help="AWS Access Key")
-    parser.add_option("-k", "--secret-key", dest="secret_key", default="",
-                help="AWS Secret Access Key")
+    parser = argparse.ArgumentParser(
+        description='Please which server do you want install Zabbix Agent. If do you want to install in all servers, type "all" in --ip'
+    )
+    parser.add_option("-a", dest="access_key",
+                help="AWS Access Key",
+                required=True, type=str)
+    parser.add_option("-k", dest="secret_key", 
+                help="AWS Secret Access Key",
+                required=True, type=str)
 
-    options = parser.parse_args()
+    args = parser.parse_args()
 
-    return options
+    return args
 
 def list_servers():
-    options = parse_arguments()
-    ec2 = boto3.resource('ec2', aws_access_key_id=options.access_key, aws_secret_access_key=options.secret_key, region_name='us-east-1')
+    args = parse_arguments()
+    ec2 = boto3.resource('ec2', aws_access_key_id=args.access_key, aws_secret_access_key=args.secret_key, region_name='us-east-1')
     running_instances = ec2.instances.filter(Filters=[{
         'Name': 'instance-state-name',
         'Values': ['running']
