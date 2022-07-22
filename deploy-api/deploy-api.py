@@ -31,7 +31,6 @@ def list_servers():
 
 def install_app():
     ip = list_servers()
-    print(ip)
     device = {
         'device_type': 'linux',
         'host': ip,
