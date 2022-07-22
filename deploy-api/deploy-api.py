@@ -36,13 +36,12 @@ def list_servers():
 
 def install_app():
     ip = list_servers()
-    aws_key = os.getenv('SSH_KEY')
     device = {
         'device_type': 'linux',
         'host': ip,
         'username': 'ubuntu',
         'use_keys': True,
-        'key_file': aws_key,
+        'key_file': 'aws_key',
         "read_timeout_override": 90,
         }
     with ConnectHandler(**device) as net_connect:
