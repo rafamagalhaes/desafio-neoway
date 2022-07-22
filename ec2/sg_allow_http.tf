@@ -1,4 +1,5 @@
 resource "aws_security_group" "neoway_sg_allow_http" {
+  name = "allow_http"
   ingress {
     description      = "HTTP from VPC"
     from_port        = 80
