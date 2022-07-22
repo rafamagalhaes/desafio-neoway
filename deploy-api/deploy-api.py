@@ -6,10 +6,10 @@ def parse_arguments():
     parser = argparse.ArgumentParser(
         description='Please which server do you want install Zabbix Agent. If do you want to install in all servers, type "all" in --ip'
     )
-    parser.add_option("-a", dest="access_key",
+    parser.add_argument("-a", dest="access_key",
                 help="AWS Access Key",
                 required=True, type=str)
-    parser.add_option("-k", dest="secret_key", 
+    parser.add_argument("-k", dest="secret_key", 
                 help="AWS Secret Access Key",
                 required=True, type=str)
 
