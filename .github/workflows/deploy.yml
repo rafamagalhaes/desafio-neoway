@@ -6,7 +6,6 @@ on:
     
 env:
   workdir_deploy: ./deploy-api
-  SSH_KEY: ${{ secrets.SSH_KEY }}
 
 jobs:
   build-and-test:
@@ -46,8 +45,6 @@ jobs:
         python -m pip install boto3 netmiko argparse
     - name: Run deploy API
       run: |
-        echo ${{ env.SSH_KEY }} > aws_key
-        chmod 400 aws_key
         python deploy-api.py -a ${{ secrets.AWS_ACCESS_KEY_ID }} -k ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       working-directory: ${{ env.workdir_deploy }}
         
