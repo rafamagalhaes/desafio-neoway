@@ -1,8 +1,21 @@
 import boto3
+from optparse import OptionParser
 from netmiko import ConnectHandler
 
+def parse_arguments():
+    parser = OptionParser()
+    parser.add_option("-a", "--access-key", dest="access_key", default="",
+                help="AWS Access Key")
+    parser.add_option("-k", "--secret-key", dest="secret_key", default="",
+                help="AWS Secret Access Key")
+
+    options = parser.parse_args()
+
+    return options
+
 def list_servers():
-    ec2 = boto3.resource('ec2', region_name='us-east-1')
+    options = parse_arguments()
+    ec2 = boto3.resource('ec2', aws_access_key_id=options.access_key, aws_secret_access_key=options.secret_key, region_name='us-east-1')
     running_instances = ec2.instances.filter(Filters=[{
         'Name': 'instance-state-name',
         'Values': ['running']
