@@ -6,6 +6,7 @@ on:
     
 env:
   workdir_deploy: ./deploy-api
+  ssh_key: ${{ secrets.SSH_KEY }}
 
 jobs:
   build-and-test:
