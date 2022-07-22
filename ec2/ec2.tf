@@ -2,7 +2,7 @@ resource "aws_instance" "neoway_ec2" {
   ami = "ami-08d4ac5b634553e16"
   instance_type = "t2.micro"
   key_name = "aws_key"
-  vpc_security_group_ids = [aws_security_group.ton_sg_allow_http.id, aws_security_group.ton_sg_allow_ssh.id]
+  vpc_security_group_ids = [aws_security_group.neoway_sg_allow_http.id, aws_security_group.neoway_sg_allow_ssh.id]
 
   tags = {
       Name = "neoway_ec2" 

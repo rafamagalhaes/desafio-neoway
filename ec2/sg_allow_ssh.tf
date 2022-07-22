@@ -1,4 +1,4 @@
-resource "aws_security_group" "ton_sg_allow_ssh" {
+resource "aws_security_group" "neoway_sg_allow_ssh" {
   ingress {
     description      = "SSH from VPC"
     from_port        = 22
