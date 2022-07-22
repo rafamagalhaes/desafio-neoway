@@ -1,6 +1,6 @@
 name: Docker Image CI
 
-on: workflow_dispatch
+on: workflow_call
     
 env:
   workdir: ./app
