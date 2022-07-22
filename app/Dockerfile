@@ -5,6 +5,8 @@ COPY *.go /src/
 
 RUN CGO_ENABLED=0 go build -o /bin/players-app
 
+EXPOSE 5000/TCP
+
 FROM alpine:3.7
 COPY --from=build /bin/players-app /bin/players-app
 ENTRYPOINT ["/bin/players-app"]
