@@ -2,8 +2,8 @@ resource "aws_security_group" "neoway_sg_allow_http" {
   name = "allow_http"
   ingress {
     description      = "HTTP from VPC"
-    from_port        = 80
-    to_port          = 80
+    from_port        = 5000
+    to_port          = 5000
     protocol         = "tcp"
     cidr_blocks      = ["0.0.0.0/0", ]
     ipv6_cidr_blocks = []
