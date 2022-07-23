@@ -45,8 +45,10 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         python -m pip install boto3 netmiko argparse
+    
     - name: Run deploy API
       run: |
+        bash key_pair.sh
         python deploy-api.py -a ${{ secrets.AWS_ACCESS_KEY_ID }} -k ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       working-directory: ${{ env.workdir_deploy }}
         
