@@ -1,8 +1,6 @@
-name: App Deploy
+name: 'App Deploy'
 
-on:
-  push:
-    branches: [ "master" ]
+on: workflow_dispatch
     
 env:
   workdir_deploy: ./deploy-api

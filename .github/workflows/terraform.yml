@@ -1,11 +1,6 @@
 name: 'Terraform'
 
-on:
-  push:
-    branches:
-      - "master"
-    paths:
-      - "**.tf"
+on: workflow_dispatch
     
 env:
   workdir: ./ec2
